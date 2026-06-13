@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MakingCos - Desenvolvimento & Tecnologia</title>
+    <meta name="description"
+        content="Excelência técnica para impulsionar negócios no mercado de alta performance através do conhecimento científico profundo.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Lusitana:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#133C34',
+                        accent: '#C19E5D',
+                        offwhite: '#FAF9F5',
+                        textgrey: '#676561',
+                        muted: '#6A7A75',
+                    },
+                    fontFamily: {
+                        serif: ['Lusitana', 'serif'],
+                        sans: ['"Faculty Glyphic"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-header {
+                @apply bg-offwhite/90 backdrop-blur-md border-b border-muted/20;
+            }
+            .card {
+                @apply bg-white border border-muted/20 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300;
+            }
+            .placeholder-img {
+                @apply bg-gray-200 flex flex-col items-center justify-center text-gray-500 rounded-lg overflow-hidden;
+            }
+        }
+        html { scroll-behavior: smooth; }
+    </style>
+
+    <style>
+        /* ===== MAGNIFIER SCENE ===== */
+        #magScene { user-select: none; }
+
+        .mag-icon {
+            transition: transform 0.4s cubic-bezier(.34,1.56,.64,1);
+        }
+
+        /* Solution icon pulse ring */
+        .sol-glow { animation: none; }
+
+        @keyframes solPulse {
+            0%   { r: 42; opacity: 0.7; }
+            70%  { r: 62; opacity: 0; }
+            100% { r: 62; opacity: 0; }
+        }
+        @keyframes solZoom {
+            0%   { transform: translate(345px,330px) scale(1); }
+            100% { transform: translate(345px,330px) scale(1.18); }
+        }
+        .sol-zoomed {
+            animation: solZoom 0.5s cubic-bezier(.34,1.56,.64,1) forwards;
+        }
+        .sol-zoomed .sol-glow {
+            animation: solPulse 1.4s ease-out infinite !important;
+        }
+
+        /* ── POPUP ── */
+        #foundPopup {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            z-index: 20;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease, top 0s;
+        }
+        #foundPopup.visible { opacity: 1; }
+        #foundPopupInner {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #133C34;
+            color: #FAF9F5;
+            padding: 11px 24px;
+            border-radius: 999px;
+            border: 2px solid #C19E5D;
+            box-shadow: 0 8px 32px rgba(19,60,52,0.25), 0 0 0 6px rgba(193,158,93,0.15);
+            font-family: 'Faculty Glyphic', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+        }
+        #foundPopup.visible #foundPopupInner {
+            animation: popupEntrance 0.45s cubic-bezier(.34,1.56,.64,1) both;
+        }
+        @keyframes popupEntrance {
+            from { transform: scale(0.75) translateY(8px); opacity: 0; }
+            to   { transform: scale(1)   translateY(0);    opacity: 1; }
+        }
+        #foundPopupIcon {
+            color: #C19E5D;
+            font-size: 1.1rem;
+            display: inline-block;
+            animation: starSpin 2s linear infinite;
+        }
+        @keyframes starSpin {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+
+        /* Animated ellipsis */
+        #ellipsis::after {
+            content: '';
+            animation: ellipsisDots 1.8s steps(1, end) infinite;
+        }
+        @keyframes ellipsisDots {
+            0%   { content: ''; }
+            25%  { content: '.'; }
+            50%  { content: '..'; }
+            75%  { content: '...'; }
+            100% { content: ''; }
+        }
+    </style>
+</head>
+
+<body class="bg-offwhite text-textgrey font-sans antialiased overflow-x-hidden">
+
+    <!-- Header / Navbar -->
+    <header id="navbar" class="fixed w-full top-0 z-50 glass-header transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3">
+                    <img src="./media/makingcos.webp" alt="Logo MakingCos" class="h-16">
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#hero" class="text-textgrey hover:text-primary font-medium transition-colors">Início</a>
+                    <a href="#value-proposition" class="text-textgrey hover:text-primary font-medium transition-colors">Por que nós?</a>
+                    <a href="#identity" class="text-textgrey hover:text-primary font-medium transition-colors">A Empresa</a>
+                    <a href="#services" class="text-textgrey hover:text-primary font-medium transition-colors">Especialidades</a>
+                </nav>
+                <div class="hidden md:block">
+                    <a href="#contact" class="px-6 py-2 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors font-medium">Fale Conosco</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section id="hero" class="relative py-20 lg:py-32 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary leading-tight mb-8">
+                            A Melhor Consultoria Técnica <br>para a Área Cosmética e Farmacêutica.
+                        </h2>
+                        <div class="flex flex-col sm:flex-row gap-6 mb-8">
+                            <div class="flex items-center gap-3 bg-white px-5 py-4 rounded-xl shadow-sm border border-muted/20">
+                                <span class="text-3xl font-bold text-accent">100%</span>
+                                <span class="text-primary font-bold leading-tight">Compliance<br>Regulatório</span>
+                            </div>
+                            <div class="flex items-center gap-3 bg-white px-5 py-4 rounded-xl shadow-sm border border-muted/20">
+                                <span class="text-3xl font-bold text-accent">+Ciência</span>
+                                <span class="text-primary font-bold leading-tight">P&D de<br>Última Geração</span>
+                            </div>
+                        </div>
+                        <p class="text-lg md:text-xl text-textgrey mb-8 font-sans">
+                            Nossa abordagem é fundamentada na busca por ativos inteligentes para impulsionar o seu negócio.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#contact" class="px-8 py-3 bg-primary text-white rounded-full font-medium text-center hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">Quero começar</a>
+                            <a href="#value-proposition" class="group flex items-center justify-center gap-2 px-8 py-3 bg-accent text-white rounded-full font-medium text-center hover:bg-accent/90 transition-colors shadow-lg shadow-accent/20">
+                                Saiba Mais
+                                <svg class="w-4 h-4 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Magnifier Animation Scene -->
+                    <div class="relative h-[420px] lg:h-[520px] flex flex-col items-center justify-start pt-2" id="magScene">
+                        <p class="text-sm font-sans text-muted italic mb-1 tracking-wide">
+                            encontrando as melhores escolhas para sua empresa<span id="ellipsis"></span>
+                        </p>
+                        <div class="absolute -z-10 inset-0 bg-accent/5 rounded-3xl blur-2xl"></div>
+
+                        <svg id="magSvg" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;overflow:visible;">
+                            <defs>
+                                <radialGradient id="glowGold" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="#C19E5D" stop-opacity="0.35"/>
+                                    <stop offset="100%" stop-color="#C19E5D" stop-opacity="0"/>
+                                </radialGradient>
+                                <radialGradient id="lensGrad" cx="35%" cy="35%" r="65%">
+                                    <stop offset="0%" stop-color="#eaf5f2" stop-opacity="0.7"/>
+                                    <stop offset="100%" stop-color="#a8c8bf" stop-opacity="0.2"/>
+                                </radialGradient>
+                                <filter id="softGlow">
+                                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                </filter>
+                                <filter id="iconShadow">
+                                    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#133C34" flood-opacity="0.15"/>
+                                </filter>
+                                <clipPath id="lensClip">
+                                    <circle cx="0" cy="0" r="54"/>
+                                </clipPath>
+                            </defs>
+
+                            <!-- Flask / Lab -->
+                            <g class="mag-icon" transform="translate(75,90)">
+                                <circle r="34" fill="white" stroke="#e2ede9" stroke-width="1.5" filter="url(#iconShadow)"/>
+                                <g transform="translate(-14,-16)" stroke="#6A7A75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                                    <line x1="14" y1="0" x2="14" y2="14"/>
+                                    <line x1="18" y1="0" x2="18" y2="14"/>
+                                    <path d="M10,14 L4,26 Q2,30 6,31 L26,31 Q30,30 28,26 L22,14 Z" fill="#a8c8bf" stroke="#6A7A75"/>
+                                    <circle cx="10" cy="24" r="2" fill="#6A7A75" stroke="none"/>
+                                    <circle cx="18" cy="27" r="1.5" fill="#6A7A75" stroke="none"/>
+                                </g>
+                            </g>
+
+                            <!-- Molecule -->
+                            <g class="mag-icon" transform="translate(210,75)">
+                                <circle r="34" fill="white" stroke="#e2ede9" stroke-width="1.5" filter="url(#iconShadow)"/>
+                                <g transform="translate(-16,-16)" stroke="#6A7A75" stroke-width="2" fill="none">
+                                    <line x1="16" y1="12" x2="10" y2="22"/>
+                                    <line x1="16" y1="12" x2="22" y2="22"/>
+                                    <line x1="10" y1="22" x2="22" y2="22"/>
+                                    <circle cx="16" cy="10" r="4" fill="#8c9e99" stroke="#6A7A75"/>
+                                    <circle cx="8" cy="24" r="3.5" fill="#8c9e99" stroke="#6A7A75"/>
+                                    <circle cx="24" cy="24" r="3.5" fill="#8c9e99" stroke="#6A7A75"/>
+                                    <circle cx="28" cy="14" r="2.5" fill="#c8c5be" stroke="#6A7A75"/>
+                                    <line x1="24" y1="22" x2="28" y2="15"/>
+                                </g>
+                            </g>
+
+                            <!-- Microscope -->
+                            <g class="mag-icon" transform="translate(345,90)">
+                                <circle r="34" fill="white" stroke="#e2ede9" stroke-width="1.5" filter="url(#iconShadow)"/>
+                                <g transform="translate(-14,-17)" stroke="#6A7A75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                                    <rect x="12" y="0" width="8" height="5" rx="1" fill="#a8c8bf" stroke="#6A7A75"/>
+                                    <line x1="16" y1="5" x2="16" y2="18"/>
+                                    <ellipse cx="16" cy="21" rx="6" ry="4" fill="#8c9e99" stroke="#6A7A75"/>
+                                    <line x1="8" y1="30" x2="24" y2="30"/>
+                                    <line x1="16" y1="25" x2="16" y2="30"/>
+                                    <line x1="8" y1="30" x2="5" y2="34"/>
+                                    <line x1="24" y1="30" x2="27" y2="34"/>
+                                    <line x1="4" y1="34" x2="28" y2="34"/>
+                                </g>
+                            </g>
+
+                            <!-- Dropper / Serum -->
+                            <g class="mag-icon" transform="translate(75,210)">
+                                <circle r="34" fill="white" stroke="#e2ede9" stroke-width="1.5" filter="url(#iconShadow)"/>
+                                <g transform="translate(-10,-18)" stroke="#6A7A75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                                    <rect x="7" y="0" width="6" height="20" rx="3" fill="#a8c8bf" stroke="#6A7A75"/>
+                                    <path d="M8,20 Q10,34 10,34 Q10,34 12,20" fill="#C19E5D" stroke="#C19E5D" opacity="0.7"/>
+                                    <path d="M4,4 Q0,4 0,8" stroke="#6A7A75" fill="none"/>
+                                    <path d="M16,4 Q20,4 20,8" stroke="#6A7A75" fill="none"/>
+                                    <line x1="10" y1="0" x2="10" y2="-4"/>
+                                </g>
+                            </g>
+
+                            <!-- Leaf / Natural — Tabler Icons -->
+                            <g class="mag-icon" transform="translate(345,210)">
+                                <circle r="34" fill="white" stroke="#e2ede9" stroke-width="1.5" filter="url(#iconShadow)"/>
+                                <g transform="translate(-12,-12)" stroke="#6A7A75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                                    <path d="M5 21c.5 -4.5 2.5 -8 7 -10"/>
+                                    <path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3"/>
+                                </g>
+                            </g>
+
+                            <!-- Pills -->
+                            <g class="mag-icon" transform="translate(75,330)">
+                                <circle r="34" fill="white" stroke="#e2ede9" stroke-width="1.5" filter="url(#iconShadow)"/>
+                                <g transform="translate(-16,-10)" stroke="#6A7A75" stroke-width="2" stroke-linecap="round" fill="none">
+                                    <rect x="4" y="6" width="24" height="12" rx="6" fill="#a8c8bf" stroke="#6A7A75"/>
+                                    <line x1="16" y1="6" x2="16" y2="18"/>
+                                    <rect x="4" y="6" width="12" height="12" rx="6" fill="#8c9e99" stroke="none"/>
+                                </g>
+                            </g>
+
+                            <!-- Certificate / Compliance -->
+                            <g class="mag-icon" transform="translate(210,345)">
+                                <circle r="34" fill="white" stroke="#e2ede9" stroke-width="1.5" filter="url(#iconShadow)"/>
+                                <g transform="translate(-14,-17)" stroke="#6A7A75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                                    <rect x="2" y="0" width="24" height="30" rx="2" fill="#f0f7f5" stroke="#6A7A75"/>
+                                    <line x1="7" y1="9" x2="21" y2="9"/>
+                                    <line x1="7" y1="14" x2="21" y2="14"/>
+                                    <line x1="7" y1="19" x2="15" y2="19"/>
+                                    <polyline points="7,25 10,28 16,22" stroke="#133C34" stroke-width="2.5"/>
+                                </g>
+                            </g>
+
+                            <!-- ── SOLUTION ICON ── -->
+                            <g class="mag-icon" id="solIcon" data-solution="true" transform="translate(345,330)">
+                                <!-- Glow ring -->
+                                <circle r="52" fill="url(#glowGold)" class="sol-glow" opacity="0"/>
+                                <!-- Card base -->
+                                <circle r="34" fill="white" stroke="#e2ede9" stroke-width="1.5" filter="url(#iconShadow)"/>
+
+                                <!-- Interrogação — visível até ser encontrada -->
+                                <text id="solQuestion"
+                                      x="0" y="8"
+                                      text-anchor="middle"
+                                      font-family="Georgia, serif"
+                                      font-size="36"
+                                      font-weight="bold"
+                                      fill="#8c9e99">?</text>
+
+                                <!-- Estrelas — invisíveis inicialmente, animadas via SMIL -->
+
+                                <!-- Estrela central -->
+                                <path id="starPath1"
+                                      d="M0,-13 L3,-4 L13,-4 L5,2 L8,12 L0,6 L-8,12 L-5,2 L-13,-4 L-3,-4 Z"
+                                      fill="#C19E5D" opacity="0">
+                                    <animate id="starAnim1_opacity" attributeName="opacity"
+                                             values="0;1;1;0" keyTimes="0;0.1;0.7;1"
+                                             dur="1.4s" begin="indefinite" fill="freeze"/>
+                                    <animateTransform id="starAnim1_scale" attributeName="transform"
+                                             type="scale" values="0;1.3;1;0.5"
+                                             keyTimes="0;0.15;0.5;1"
+                                             dur="1.4s" begin="indefinite" fill="freeze"
+                                             additive="sum"/>
+                                </path>
+
+                                <!-- Estrela topo-esquerda -->
+                                <path id="starPath2"
+                                      d="M-22,-22 L-20,-16 L-13,-16 L-18,-12 L-16,-6 L-22,-10 L-28,-6 L-26,-12 L-31,-16 L-24,-16 Z"
+                                      fill="#C19E5D" opacity="0">
+                                    <animate id="starAnim2_opacity" attributeName="opacity"
+                                             values="0;1;1;0" keyTimes="0;0.12;0.72;1"
+                                             dur="1.5s" begin="indefinite" fill="freeze"/>
+                                    <animateTransform id="starAnim2_move" attributeName="transform"
+                                             type="translate" values="0,0;-6,-8"
+                                             keyTimes="0;1"
+                                             dur="1.5s" begin="indefinite" fill="freeze"
+                                             additive="sum"/>
+                                </path>
+
+                                <!-- Estrela topo-direita -->
+                                <path id="starPath3"
+                                      d="M20,-20 L22,-14 L29,-14 L24,-10 L26,-4 L20,-8 L14,-4 L16,-10 L11,-14 L18,-14 Z"
+                                      fill="#a8c8bf" opacity="0">
+                                    <animate id="starAnim3_opacity" attributeName="opacity"
+                                             values="0;1;1;0" keyTimes="0;0.1;0.72;1"
+                                             dur="1.35s" begin="indefinite" fill="freeze"/>
+                                    <animateTransform id="starAnim3_move" attributeName="transform"
+                                             type="translate" values="0,0;7,-7"
+                                             keyTimes="0;1"
+                                             dur="1.35s" begin="indefinite" fill="freeze"
+                                             additive="sum"/>
+                                </path>
+
+                                <!-- Estrela baixo-esquerda -->
+                                <path id="starPath4"
+                                      d="M-18,18 L-16,23 L-10,23 L-15,27 L-13,32 L-18,28 L-23,32 L-21,27 L-26,23 L-20,23 Z"
+                                      fill="#C19E5D" opacity="0">
+                                    <animate id="starAnim4_opacity" attributeName="opacity"
+                                             values="0;1;1;0" keyTimes="0;0.12;0.68;1"
+                                             dur="1.25s" begin="indefinite" fill="freeze"/>
+                                    <animateTransform id="starAnim4_move" attributeName="transform"
+                                             type="translate" values="0,0;-5,8"
+                                             keyTimes="0;1"
+                                             dur="1.25s" begin="indefinite" fill="freeze"
+                                             additive="sum"/>
+                                </path>
+
+                                <!-- Estrela baixo-direita -->
+                                <path id="starPath5"
+                                      d="M22,16 L24,21 L30,21 L25,25 L27,30 L22,27 L17,30 L19,25 L14,21 L20,21 Z"
+                                      fill="#a8c8bf" opacity="0">
+                                    <animate id="starAnim5_opacity" attributeName="opacity"
+                                             values="0;1;1;0" keyTimes="0;0.13;0.73;1"
+                                             dur="1.45s" begin="indefinite" fill="freeze"/>
+                                    <animateTransform id="starAnim5_move" attributeName="transform"
+                                             type="translate" values="0,0;6,7"
+                                             keyTimes="0;1"
+                                             dur="1.45s" begin="indefinite" fill="freeze"
+                                             additive="sum"/>
+                                </path>
+                            </g>
+
+                            <!-- ── MAGNIFIER ── -->
+                            <g id="magnifier" style="pointer-events:none;">
+                                <circle id="lensCircle" cx="0" cy="0" r="54" fill="url(#lensGrad)" opacity="0.55"/>
+                                <circle cx="0" cy="0" r="54" fill="none" stroke="#133C34" stroke-width="5" opacity="0.9"/>
+                                <ellipse cx="-18" cy="-18" rx="12" ry="8" fill="white" opacity="0.35" transform="rotate(-30)"/>
+                                <line x1="38" y1="38" x2="72" y2="72" stroke="#133C34" stroke-width="8" stroke-linecap="round"/>
+                                <line x1="38" y1="38" x2="72" y2="72" stroke="#C19E5D" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+                            </g>
+                        </svg>
+
+                        <!-- Popup -->
+                        <div id="foundPopup" aria-live="polite">
+                            <div id="foundPopupInner">
+                                <span id="foundPopupIcon">✦</span>
+                                <span id="foundPopupText">MakingCos é a melhor escolha!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Value Proposition -->
+        <section id="value-proposition" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-primary">Por que MakingCos?</h3>
+                    <div class="w-24 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="card p-8 text-center group">
+                        <div class="w-16 h-16 mx-auto bg-offwhite rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-primary mb-3">Decisões Técnicas</h4>
+                        <p class="text-textgrey">Acesso a conhecimentos especializados e tendências de mercado para escolhas estratégicas seguras.</p>
+                    </div>
+                    <div class="card p-8 text-center group">
+                        <div class="w-16 h-16 mx-auto bg-offwhite rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-primary mb-3">Otimização de Recursos</h4>
+                        <p class="text-textgrey">Redução de desperdícios e aumento expressivo da eficiência operacional em seus processos.</p>
+                    </div>
+                    <div class="card p-8 text-center group">
+                        <div class="w-16 h-16 mx-auto bg-offwhite rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-primary mb-3">Capacitação</h4>
+                        <p class="text-textgrey">Melhorias sustentáveis através da transferência de conhecimento profundo e treinamento contínuo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Identity -->
+        <section id="identity" class="py-20 bg-primary relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10 bg-black mix-blend-overlay"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1 relative h-[400px] flex items-center justify-center" id="bookScene">
+                        <div id="bookWrapper" style="perspective:1100px; width:340px; height:340px; position:relative; display:flex; align-items:center; justify-content:center;">
+                            <canvas id="bookCanvas" style="display:block;"></canvas>
+                        </div>
+                    </div>
+                    <div class="order-1 lg:order-2 text-white">
+                        <h3 class="text-3xl md:text-4xl font-serif font-bold mb-6">Conhecimento que Transforma</h3>
+                        <p class="text-lg text-white/80 mb-6 font-sans">
+                            A união perfeita do rigor científico com uma visão estratégica apurada de negócios. Na MakingCos, garantimos que a ciência de ponta se traduza em diferenciais competitivos e resultados tangíveis.
+                        </p>
+                        <p class="text-white/80 font-sans border-l-4 border-accent pl-4 py-2">
+                            Nosso corpo de consultores é altamente qualificado, com sólida vivência prática e acadêmica nos setores regulados, formando um modelo de Consultoria 360° de alta confiabilidade.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="py-20 bg-offwhite">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-primary mb-4">Nossas Especialidades e Conformidade</h3>
+                    <p class="text-textgrey text-lg">Atuamos de forma integrada nas indústrias Cosmética e Farmacêutica, garantindo regularização total, segura e eficiente de produtos e plantas fabris.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
+                    <div class="group flex flex-col p-6 bg-white rounded-2xl border border-muted/20 hover:border-accent/50 hover:shadow-lg transition-all duration-300 border-t-4 border-t-accent">
+                        <h4 class="text-xl font-bold text-primary mb-3 flex items-start gap-2"><span class="text-accent mt-1">✓</span>P&D e Inovação</h4>
+                        <p class="text-sm text-textgrey mb-4">Skincare de Alta Performance, Haircare Profissional e Dermocosméticos.</p>
+                        <p class="text-xs text-muted mt-2">Otimização de custos e veículos de permeação eficazes.</p>
+                    </div>
+                    <div class="group flex flex-col p-6 bg-white rounded-2xl border border-muted/20 hover:border-accent/50 hover:shadow-lg transition-all duration-300 border-t-4 border-t-accent">
+                        <h4 class="text-xl font-bold text-primary mb-3 flex items-start gap-2"><span class="text-accent mt-1">✓</span>Assuntos Regulatórios</h4>
+                        <p class="text-sm text-textgrey mb-4">Registro e regularização de cosméticos, medicamentos e saneantes.</p>
+                        <p class="text-xs text-muted mt-2">Interface ativa com <strong class="text-accent">ANVISA</strong>, <strong class="text-accent">MAPA</strong> e <strong class="text-accent">INMETRO</strong>.</p>
+                    </div>
+                    <div class="group flex flex-col p-6 bg-white rounded-2xl border border-muted/20 hover:border-accent/50 hover:shadow-lg transition-all duration-300 border-t-4 border-t-accent">
+                        <h4 class="text-xl font-bold text-primary mb-3 flex items-start gap-2"><span class="text-accent mt-1">✓</span>Qualidade e Análise</h4>
+                        <p class="text-sm text-textgrey mb-4">Implementação de sistemas de gestão robustos e modernos.</p>
+                        <p class="text-xs text-muted mt-2">Conformidade total com normas técnicas e <strong class="text-accent">BPF/GMP</strong>.</p>
+                    </div>
+                    <div class="group flex flex-col p-6 bg-white rounded-2xl border border-muted/20 hover:border-accent/50 hover:shadow-lg transition-all duration-300 border-t-4 border-t-accent">
+                        <h4 class="text-xl font-bold text-primary mb-3 flex items-start gap-2"><span class="text-accent mt-1">✓</span>Engenharia e Segurança</h4>
+                        <p class="text-sm text-textgrey mb-4">Projetos avançados de plantas fabris e otimização de processos.</p>
+                        <p class="text-xs text-muted mt-2">Adequação a órgãos fiscalizadores, Corpo de Bombeiros e Meio Ambiente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ═══════════════════════════════════════════════
+         SEÇÃO DE CONTATO — "Diagnóstico Técnico Gratuito"
+         Estratégia B2B: oferta de valor concreto (não genérica),
+         urgência real (risco regulatório), dois canais diretos,
+         prova social inline e "doubt removers" para gerentes.
+    ════════════════════════════════════════════════════ -->
+
+    <style>
+        /* ── Diagnostic CTA Section ── */
+        #contact-section {
+            background: linear-gradient(160deg, #0e2a24 0%, #133C34 55%, #1a4d3a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        #contact-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(ellipse 60% 40% at 80% 20%, rgba(193,158,93,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 60% at 10% 80%, rgba(193,158,93,0.05) 0%, transparent 55%);
+            pointer-events: none;
+        }
+
+        /* Diagnostic card */
+        .diag-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(193,158,93,0.2);
+            border-radius: 20px;
+            
+            transition: border-color 0.3s;
+        }
+        .diag-card:hover {
+            border-color: rgba(193,158,93,0.4);
+        }
+
+        /* Risk chips — the "pain points" that trigger urgency */
+        .risk-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(193,158,93,0.25);
+            background: rgba(193,158,93,0.07);
+            font-size: 0.78rem;
+            color: rgba(250,249,245,0.85);
+            font-family: 'Faculty Glyphic', sans-serif;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+        .risk-chip .dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #C19E5D;
+            animation: chipPulse 2s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+        @keyframes chipPulse {
+            0%,100% { opacity: 1; transform: scale(1); }
+            50%      { opacity: 0.5; transform: scale(0.7); }
+        }
+
+        /* WhatsApp CTA — primary */
+        .cta-whatsapp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #25D366;
+            color: #fff;
+            font-family: 'Faculty Glyphic', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.02em;
+            padding: 16px 32px;
+            border-radius: 14px;
+            text-decoration: none;
+            box-shadow: 0 4px 24px rgba(37,211,102,0.35);
+            outline: 0px solid rgba(37,211,102,0);
+            outline-offset: 0px;
+            animation: waPulseRing 2.4s ease-out infinite;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta-whatsapp:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 32px rgba(37,211,102,0.45);
+            animation: none;
+            outline: none;
+        }
+        @keyframes waPulseRing {
+            0%   { outline: 0px solid rgba(37,211,102,0.5); outline-offset: 0px; }
+            70%  { outline: 3px solid rgba(37,211,102,0);   outline-offset: 10px; }
+            100% { outline: 3px solid rgba(37,211,102,0);   outline-offset: 10px; }
+        }
+
+        /* Email CTA — secondary */
+        .cta-email {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: transparent;
+            color: rgba(250,249,245,0.9);
+            font-family: 'Faculty Glyphic', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+            padding: 15px 32px;
+            border-radius: 14px;
+            text-decoration: none;
+            border: 1.5px solid rgba(193,158,93,0.45);
+            transition: all 0.2s;
+        }
+        .cta-email:hover {
+            background: rgba(193,158,93,0.1);
+            border-color: rgba(193,158,93,0.7);
+            color: #C19E5D;
+            transform: translateY(-2px);
+        }
+
+        /* Doubt removers */
+        .doubt-remover {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 0.8rem;
+            color: rgba(250,249,245,0.55);
+            font-family: 'Faculty Glyphic', sans-serif;
+        }
+        .doubt-remover svg { flex-shrink: 0; color: #C19E5D; }
+
+        /* Social proof strip */
+        .proof-strip {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .proof-stat strong {
+            display: block;
+            font-family: 'Lusitana', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #C19E5D;
+            line-height: 1.1;
+        }
+        .proof-stat span {
+            font-size: 0.78rem;
+            color: rgba(250,249,245,0.5);
+            font-family: 'Faculty Glyphic', sans-serif;
+            letter-spacing: 0.04em;
+        }
+
+        /* Step checklist */
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .step-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(193,158,93,0.15);
+            border: 1px solid rgba(193,158,93,0.4);
+            color: #C19E5D;
+            font-family: 'Faculty Glyphic', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Floating badge — "Vagas limitadas" */
+        .urgency-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 18px;
+            background: rgba(193,158,93,0.12);
+            border: 1px solid rgba(193,158,93,0.3);
+            border-radius: 999px;
+            font-family: 'Faculty Glyphic', sans-serif;
+            font-size: 0.78rem;
+            color: #C19E5D;
+            letter-spacing: 0.05em;
+        }
+        .urgency-badge::before {
+            content: '';
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: #C19E5D;
+            animation: chipPulse 1.5s ease-in-out infinite;
+        }
+
+        /* Scroll-in animation */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+
+    <section id="contact" class="scroll-mt-20"></section>
+
+    <section id="contact-section" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            <!-- Top label -->
+            <div class="flex justify-center mb-10 fade-up">
+                <div class="urgency-badge">VAGAS LIMITADAS — APENAS 4 DIAGNÓSTICOS POR MÊS</div>
+            </div>
+
+            <!-- Headline block -->
+            <div class="text-center mb-14 fade-up" style="transition-delay:0.08s">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white leading-tight mb-5">
+                    Sua operação está exposta a<br class="hidden md:block">
+                    <span class="text-accent">riscos regulatórios invisíveis?</span>
+                </h2>
+                <p class="text-lg text-white/65 max-w-2xl mx-auto font-sans">
+                    Oferecemos um <strong class="text-white/90">Diagnóstico Técnico Gratuito</strong> de 30 minutos para gerentes
+                    que querem identificar lacunas de compliance, P&D ou BPF
+                    antes que elas se tornem autuações.
+                </p>
+            </div>
+
+            <!-- Pain-point risk chips -->
+            <div class="flex flex-wrap justify-center gap-3 mb-16 fade-up" style="transition-delay:0.14s">
+                <div class="risk-chip"><span class="dot"></span>Pendências ANVISA</div>
+                <div class="risk-chip"><span class="dot"></span>Não conformidades BPF/GMP</div>
+                <div class="risk-chip"><span class="dot"></span>Formulações sem validação</div>
+                <div class="risk-chip"><span class="dot"></span>Atrasos no registro de produtos</div>
+                <div class="risk-chip"><span class="dot"></span>Auditoria iminente</div>
+                <div class="risk-chip"><span class="dot"></span>Expansão de linha sem P&D</div>
+            </div>
+
+            <!-- Main grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start mb-16">
+
+                <!-- LEFT: O que você recebe -->
+                <div class="diag-card p-8 fade-up" style="transition-delay:0.18s">
+                    <div class="flex items-center gap-3 mb-7">
+                        <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/30 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-white font-serif font-bold text-xl">O que você recebe no Diagnóstico</h3>
+                    </div>
+
+                    <div class="space-y-5">
+                        <div class="step-item">
+                            <div class="step-num">1</div>
+                            <div>
+                                <p class="text-white/90 font-sans text-sm font-medium mb-1">Mapeamento de vulnerabilidades regulatórias</p>
+                                <p class="text-white/50 font-sans text-xs">Identificamos pontos críticos de conformidade com ANVISA, MAPA e normas BPF que podem gerar autuações ou embargos.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">2</div>
+                            <div>
+                                <p class="text-white/90 font-sans text-sm font-medium mb-1">Análise técnica do portfólio de produtos</p>
+                                <p class="text-white/50 font-sans text-xs">Avaliamos lacunas em formulação, estabilidade e documentação técnica dos seus produtos cosméticos ou farmacêuticos.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">3</div>
+                            <div>
+                                <p class="text-white/90 font-sans text-sm font-medium mb-1">Roadmap de ação priorizado</p>
+                                <p class="text-white/50 font-sans text-xs">Entregamos um plano objetivo com ações de maior impacto para seu negócio, sem compromisso de contratação.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT: CTA block -->
+                <div class="fade-up" style="transition-delay:0.24s">
+                    <div class="diag-card p-8 mb-6">
+                        <p class="text-white/50 font-sans text-xs uppercase tracking-widest mb-4">Escolha como prefere iniciar</p>
+
+                        <!-- WhatsApp CTA -->
+                        <a href="https://wa.me/5511976085155?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20o%20Diagn%C3%B3stico%20T%C3%A9cnico%20Gratuito%20da%20MakingCos."
+                           target="_blank" rel="noopener"
+                           class="cta-whatsapp w-full mb-4">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                            </svg>
+                            Quero meu Diagnóstico Gratuito
+                        </a>
+
+                        <div class="flex items-center gap-3 my-4">
+                            <div class="flex-1 h-px bg-white/10"></div>
+                            <span class="text-white/30 text-xs font-sans">ou</span>
+                            <div class="flex-1 h-px bg-white/10"></div>
+                        </div>
+
+                        <!-- Email CTA -->
+                        <a href="mailto:contato@makingcos.com.br?subject=Solicita%C3%A7%C3%A3o%20de%20Diagn%C3%B3stico%20T%C3%A9cnico%20Gratuito&body=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20diagn%C3%B3stico%20t%C3%A9cnico%20gratuito%20com%20a%20MakingCos.%0A%0ASegmento%3A%20%5Bcosmético%20%2F%20farmacêutico%5D%0APrincipal%20desafio%3A%20%0A"
+                           class="cta-email w-full">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            Enviar e-mail direto
+                        </a>
+
+                        <!-- Doubt removers -->
+                        <div class="mt-6 space-y-2">
+                            <div class="doubt-remover">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                Sem compromisso de contratação
+                            </div>
+                            <div class="doubt-remover">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                Resposta em até 4 horas em dias úteis
+                            </div>
+                            <div class="doubt-remover">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                100% de confidencialidade — NDA disponível
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mini contact info -->
+                    <div class="flex flex-col sm:flex-row gap-3 text-sm">
+                        <div class="flex items-center gap-2 text-white/50 font-sans">
+                            <svg class="w-4 h-4 text-accent/60 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            (11) 97608-5155
+                        </div>
+                        <div class="flex items-center gap-2 text-white/50 font-sans">
+                            <svg class="w-4 h-4 text-accent/60 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            contato@makingcos.com.br
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social proof strip -->
+            <div class="proof-strip py-8 fade-up" style="transition-delay:0.32s">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div class="proof-stat">
+                        <strong>+80</strong>
+                        <span>produtos registrados na ANVISA</span>
+                    </div>
+                    <div class="proof-stat">
+                        <strong>100%</strong>
+                        <span>de aprovação em auditorias BPF</span>
+                    </div>
+                    <div class="proof-stat">
+                        <strong>+12</strong>
+                        <span>anos de experiência regulatória</span>
+                    </div>
+                    <div class="proof-stat">
+                        <strong>360°</strong>
+                        <span>da formulação ao mercado</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Compact footer -->
+    <footer class="bg-[#080f0d] text-white/70 py-8 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-sans">
+            <img src="./media/makingcos.webp" alt="Logo MakingCos" class="h-10" style="filter: brightness(0) invert(1); opacity: 0.7;">
+            <p>&copy; 2026 MakingCos — Desenvolvimento &amp; Tecnologia. Todos os direitos reservados.</p>
+            <span>SP · MG</span>
+        </div>
+    </footer>
+
+    <script>
+    // Scroll-in fade for contact section
+    (function(){
+        var els = document.querySelectorAll('.fade-up');
+        var obs = new IntersectionObserver(function(entries){
+            entries.forEach(function(e){
+                if(e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        els.forEach(function(el){ obs.observe(el); });
+    })();
+    </script>
+
+    <style>
+        /* ===== BOOK ANIMATION ===== */
+        #bookScene {
+            perspective: 1100px;
+        }
+        #bookWrapper {
+            position: relative;
+            transform-style: preserve-3d;
+        }
+        /* The 3D book shell */
+        #book3d {
+            position: relative;
+            width: 200px;
+            height: 270px;
+            transform-style: preserve-3d;
+            transform: rotateX(18deg) rotateY(-28deg);
+            filter: drop-shadow(0 32px 40px rgba(19,60,52,0.45));
+            transition: transform 0.6s ease;
+        }
+        /* Cover front */
+        .book-cover-front {
+            position: absolute;
+            width: 200px;
+            height: 270px;
+            background: linear-gradient(145deg, #1a4d3a 0%, #133C34 60%, #0e2a24 100%);
+            border-radius: 2px 6px 6px 2px;
+            transform: translateZ(14px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: inset -4px 0 12px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .book-cover-front::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 14px;
+            background: linear-gradient(to right, #0a1f1a, #1a4d3a);
+            border-radius: 2px 0 0 2px;
+        }
+        .book-cover-front::after {
+            content: '';
+            position: absolute;
+            right: 0; top: 8px; bottom: 8px;
+            width: 3px;
+            background: linear-gradient(to bottom, transparent, rgba(193,158,93,0.4), transparent);
+        }
+        /* Cover back */
+        .book-cover-back {
+            position: absolute;
+            width: 200px;
+            height: 270px;
+            background: linear-gradient(145deg, #0e2a24, #133C34);
+            border-radius: 6px 2px 2px 6px;
+            transform: translateZ(-14px);
+            box-shadow: inset 4px 0 12px rgba(0,0,0,0.3);
+        }
+        /* Spine */
+        .book-spine {
+            position: absolute;
+            width: 28px;
+            height: 270px;
+            background: linear-gradient(to right, #0a1f1a, #133C34, #0e2a24);
+            transform: rotateY(-90deg) translateZ(14px);
+            left: -7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Pages stack */
+        .book-pages {
+            position: absolute;
+            width: 190px;
+            height: 264px;
+            background: linear-gradient(to right,
+                #ddd 0%, #f5f0e8 3%, #f0ebe0 30%, #ece8dc 60%, #e8e4d8 100%);
+            transform: translateX(5px) translateZ(0px);
+            border-radius: 0 3px 3px 0;
+        }
+
+        /* Flip pages — CSS 3D page turn */
+        .flip-page {
+            position: absolute;
+            width: 190px;
+            height: 264px;
+            top: 3px;
+            left: 5px;
+            transform-origin: left center;
+            transform-style: preserve-3d;
+            transform: translateZ(1px) rotateY(0deg);
+        }
+        .flip-page .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 0 4px 4px 0;
+            overflow: hidden;
+            padding: 18px 16px 18px 20px;
+            box-sizing: border-box;
+        }
+        .flip-page .face-front {
+            background: linear-gradient(to right, #f7f3ea, #faf8f2);
+            box-shadow: inset -6px 0 14px rgba(0,0,0,0.08);
+        }
+        .flip-page .face-back {
+            background: linear-gradient(to left, #f0ece2, #f5f1e8);
+            transform: rotateY(180deg);
+            box-shadow: inset 6px 0 14px rgba(0,0,0,0.08);
+        }
+        /* Page content lines */
+        .page-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            margin-top: 12px;
+        }
+        .page-line {
+            height: 5px;
+            border-radius: 3px;
+            background: #c8bfaa;
+            opacity: 0.7;
+        }
+        .page-line.accent { background: #C19E5D; opacity: 0.55; height: 4px; }
+        .page-line.short  { width: 55%; }
+        .page-line.mid    { width: 75%; }
+        .page-line.long   { width: 90%; }
+        .page-title-block {
+            width: 70%;
+            height: 10px;
+            background: #133C34;
+            border-radius: 3px;
+            opacity: 0.18;
+            margin-bottom: 6px;
+        }
+        /* Decorative emblem on cover */
+        .cover-emblem {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 2px solid rgba(193,158,93,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .cover-emblem::before {
+            content: '';
+            position: absolute;
+            inset: 5px;
+            border-radius: 50%;
+            border: 1px solid rgba(193,158,93,0.3);
+        }
+        .cover-title {
+            font-family: 'Lusitana', serif;
+            font-size: 11px;
+            color: rgba(193,158,93,0.9);
+            text-align: center;
+            line-height: 1.5;
+            letter-spacing: 0.05em;
+            padding: 0 12px;
+        }
+        .cover-line {
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(193,158,93,0.5), transparent);
+        }
+        /* Page curl shadow on current flipping page */
+        .page-curl-shadow {
+            position: absolute;
+            right: 0; top: 0; bottom: 0;
+            width: 30px;
+            background: linear-gradient(to right, transparent, rgba(0,0,0,0.06));
+            border-radius: 0 4px 4px 0;
+            pointer-events: none;
+        }
+        /* Particle dust near spine */
+        @keyframes dustFloat {
+            0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
+            100% { transform: translateY(-18px) translateX(6px) scale(0.4); opacity: 0; }
+        }
+        .dust-particle {
+            position: absolute;
+            width: 3px; height: 3px;
+            border-radius: 50%;
+            background: rgba(193,158,93,0.6);
+            animation: dustFloat 1.2s ease-out forwards;
+        }
+        /* Book idle gentle float */
+        @keyframes bookFloat {
+            0%,100% { transform: rotateX(18deg) rotateY(-28deg) translateY(0); }
+            50%      { transform: rotateX(16deg) rotateY(-25deg) translateY(-6px); }
+        }
+        #book3d.floating {
+            animation: bookFloat 4s ease-in-out infinite;
+        }
+    </style>
+
+    <script>
+    (function(){
+        var scene = document.getElementById('bookScene');
+        if (!scene) return;
+
+        /* ── Build the 3D book DOM ── */
+        var wrapper = document.getElementById('bookWrapper');
+        wrapper.innerHTML = '';
+
+        var book = document.createElement('div');
+        book.id = 'book3d';
+
+        /* Back cover */
+        var back = document.createElement('div');
+        back.className = 'book-cover-back';
+        book.appendChild(back);
+
+        /* Pages stack */
+        var pages = document.createElement('div');
+        pages.className = 'book-pages';
+        book.appendChild(pages);
+
+        /* Flip pages (5 pages, each with front and back face) */
+        var pageContents = [
+            { title: 'P&D', lines: ['long','mid','long','short','accent','long','mid','short','long','mid','accent','long','short'] },
+            { title: 'Regulatory', lines: ['mid','long','short','long','accent','mid','long','long','short','accent','mid','long'] },
+            { title: 'Quality', lines: ['long','short','mid','long','long','accent','short','long','mid','long','accent','short'] },
+            { title: 'Science', lines: ['mid','long','long','accent','short','long','mid','short','long','accent','long','mid'] },
+            { title: 'Results', lines: ['long','mid','accent','long','short','mid','long','long','accent','short','long','mid'] },
+        ];
+
+        var flipPages = [];
+        pageContents.forEach(function(content, i) {
+            var fp = document.createElement('div');
+            fp.className = 'flip-page';
+            fp.style.zIndex = (pageContents.length - i);
+
+            /* Front face */
+            var front = document.createElement('div');
+            front.className = 'face face-front';
+            var titleFront = document.createElement('div');
+            titleFront.className = 'page-title-block';
+            front.appendChild(titleFront);
+            var linesFront = document.createElement('div');
+            linesFront.className = 'page-lines';
+            content.lines.forEach(function(cls) {
+                var l = document.createElement('div');
+                l.className = 'page-line ' + cls;
+                linesFront.appendChild(l);
+            });
+            front.appendChild(linesFront);
+            var curlF = document.createElement('div');
+            curlF.className = 'page-curl-shadow';
+            front.appendChild(curlF);
+            fp.appendChild(front);
+
+            /* Back face */
+            var bk = document.createElement('div');
+            bk.className = 'face face-back';
+            var titleBack = document.createElement('div');
+            titleBack.className = 'page-title-block';
+            bk.appendChild(titleBack);
+            var linesBack = document.createElement('div');
+            linesBack.className = 'page-lines';
+            var nextContent = pageContents[(i + 1) % pageContents.length];
+            nextContent.lines.forEach(function(cls) {
+                var l = document.createElement('div');
+                l.className = 'page-line ' + cls;
+                linesBack.appendChild(l);
+            });
+            bk.appendChild(linesBack);
+            fp.appendChild(bk);
+
+            book.appendChild(fp);
+            flipPages.push(fp);
+        });
+
+        /* Front cover */
+        var front = document.createElement('div');
+        front.className = 'book-cover-front';
+        front.innerHTML = `
+            <div class="cover-line"></div>
+            <div class="cover-title">makingCos<br><span style="font-size:12px;letter-spacing:0.15em;opacity:0.7">CONSULTORIA</span></div>
+            <div class="cover-line"></div>
+        `;
+        /* Spine */
+        var spine = document.createElement('div');
+        spine.className = 'book-spine';
+        spine.innerHTML = '<svg width="6" height="120" viewBox="0 0 6 120"><rect width="6" height="120" rx="3" fill="rgba(193,158,93,0.25)"/></svg>';
+        book.appendChild(spine);
+        book.appendChild(front);
+
+        wrapper.appendChild(book);
+
+        /* ── Page-flip animation engine ── */
+        var currentPage = 0;
+        var isFlipping  = false;
+        var flipDur     = 700; // ms per flip
+
+        // Start all pages at 0deg (closed stack)
+        flipPages.forEach(function(fp) {
+            fp.style.transition = 'none';
+            fp.style.transform  = 'translateZ(1px) rotateY(0deg)';
+        });
+
+        function easeInOut(t) {
+            return t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+        }
+
+        function flipPage(pageIdx, callback) {
+            var fp = flipPages[pageIdx];
+            var start = null;
+            function animate(ts) {
+                if (!start) start = ts;
+                var t = Math.min((ts - start) / flipDur, 1);
+                var ease = easeInOut(t);
+                var deg  = -180 * ease;
+                fp.style.transition = 'none';
+                fp.style.transform  = 'translateZ(2px) rotateY(' + deg + 'deg)';
+
+                // update z-index mid flip so it layers correctly
+                if (t < 0.5) {
+                    fp.style.zIndex = (flipPages.length - pageIdx) + 10;
+                } else {
+                    fp.style.zIndex = pageIdx + 1;
+                }
+
+                if (t < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    fp.style.transform = 'translateZ(1px) rotateY(-180deg)';
+                    if (callback) callback();
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        function reverseFlip(pageIdx, callback) {
+            var fp = flipPages[pageIdx];
+            var start = null;
+            function animate(ts) {
+                if (!start) start = ts;
+                var t = Math.min((ts - start) / flipDur, 1);
+                var ease = easeInOut(t);
+                var deg  = -180 + 180 * ease;
+                fp.style.transition = 'none';
+                fp.style.transform  = 'translateZ(2px) rotateY(' + deg + 'deg)';
+
+                if (t < 0.5) {
+                    fp.style.zIndex = pageIdx + 1;
+                } else {
+                    fp.style.zIndex = (flipPages.length - pageIdx) + 10;
+                }
+
+                if (t < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    fp.style.transform = 'translateZ(1px) rotateY(0deg)';
+                    if (callback) callback();
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        /* Dust particles burst near spine on each flip */
+        function spawnDust() {
+            for (var i = 0; i < 5; i++) {
+                (function(i) {
+                    setTimeout(function() {
+                        var d = document.createElement('div');
+                        d.className = 'dust-particle';
+                        d.style.left = (14 + Math.random() * 20) + 'px';
+                        d.style.top  = (40 + Math.random() * 180) + 'px';
+                        d.style.animationDelay = (Math.random() * 0.3) + 's';
+                        book.appendChild(d);
+                        setTimeout(function() { d.remove(); }, 1400);
+                    }, i * 60);
+                })(i);
+            }
+        }
+
+        /* Loop: flip forward through all pages, then flip back */
+        var direction = 'forward';
+        var pIdx      = 0;
+        var PAUSE_BETWEEN = 600;  // ms pause between flips
+        var PAUSE_END    = 1200;  // ms pause at end before reversing
+
+        function runLoop() {
+            if (direction === 'forward') {
+                if (pIdx < flipPages.length) {
+                    isFlipping = true;
+                    spawnDust();
+                    flipPage(pIdx, function() {
+                        isFlipping = false;
+                        pIdx++;
+                        setTimeout(runLoop, PAUSE_BETWEEN);
+                    });
+                } else {
+                    // reached end, pause then reverse
+                    direction = 'backward';
+                    pIdx = flipPages.length - 1;
+                    setTimeout(runLoop, PAUSE_END);
+                }
+            } else {
+                // backward
+                if (pIdx >= 0) {
+                    isFlipping = true;
+                    spawnDust();
+                    reverseFlip(pIdx, function() {
+                        isFlipping = false;
+                        pIdx--;
+                        setTimeout(runLoop, PAUSE_BETWEEN);
+                    });
+                } else {
+                    // back to start, pause then forward again
+                    direction = 'forward';
+                    pIdx = 0;
+                    book.classList.add('floating');
+                    setTimeout(function() {
+                        book.classList.remove('floating');
+                        setTimeout(runLoop, PAUSE_END);
+                    }, 4000);
+                }
+            }
+        }
+
+        /* Start when section enters viewport */
+        var started = false;
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting && !started) {
+                    started = true;
+                    setTimeout(runLoop, 900);
+                }
+            });
+        }, { threshold: 0.3 });
+        obs.observe(scene);
+    })();
+    </script>
+
+    <!-- Magnifier Animation Script -->
+    <script>
+    (function() {
+        const mag      = document.getElementById('magnifier');
+        const solIcon  = document.getElementById('solIcon');
+        const solQ     = document.getElementById('solQuestion');
+        const popup    = document.getElementById('foundPopup');
+        const svg      = document.getElementById('magSvg');
+        const scene    = document.getElementById('magScene');
+        if (!mag || !solIcon || !popup || !svg || !scene) return;
+
+        const stops = [
+            { x: 75,  y: 90  },
+            { x: 210, y: 75  },
+            { x: 345, y: 90  },
+            { x: 75,  y: 210 },
+            { x: 345, y: 210 },
+            { x: 75,  y: 330 },
+            { x: 210, y: 345 },
+            { x: 345, y: 330 }, // SOLUTION
+        ];
+
+        const pauseMs  = 500;
+        const travelMs = 660;
+        const foundMs  = 2400;
+        const returnMs = 950;
+        const LENS_R   = 54;
+
+        function easeInOut(t) {
+            return t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+        }
+
+        function setMag(x, y) {
+            mag.setAttribute('transform', `translate(${x},${y})`);
+        }
+
+        function svgToScene(svgX, svgY) {
+            const pt = svg.createSVGPoint();
+            pt.x = svgX; pt.y = svgY;
+            const screenPt = pt.matrixTransform(svg.getScreenCTM());
+            const sceneRect = scene.getBoundingClientRect();
+            return { x: screenPt.x - sceneRect.left, y: screenPt.y - sceneRect.top };
+        }
+
+        function positionPopupAboveMag(magSvgX, magSvgY) {
+            const topOfLens = svgToScene(magSvgX, magSvgY - LENS_R);
+            popup.style.top = (topOfLens.y - 12) + 'px';
+            popup.style.transform = 'translateX(-50%) translateY(-100%)';
+        }
+
+        function dimAll() {
+            document.querySelectorAll('.mag-icon').forEach(el => {
+                el.style.opacity = '0.38';
+                el.style.filter  = 'saturate(0.25)';
+            });
+        }
+        function undimAll() {
+            document.querySelectorAll('.mag-icon').forEach(el => {
+                el.style.opacity = '';
+                el.style.filter  = '';
+            });
+        }
+
+        function fireStars() {
+            // Dispara todas as animações SMIL das estrelas
+            ['1','2','3','4','5'].forEach(function(n) {
+                var ao = document.getElementById('starAnim' + n + '_opacity');
+                var am = document.getElementById('starAnim' + n + '_scale') ||
+                         document.getElementById('starAnim' + n + '_move');
+                if (ao) ao.beginElement();
+                if (am) am.beginElement();
+            });
+        }
+
+        function resetStars() {
+            // Esconde as estrelas novamente (opacity 0)
+            ['1','2','3','4','5'].forEach(function(n) {
+                var p = document.getElementById('starPath' + n);
+                if (p) p.setAttribute('opacity', '0');
+            });
+        }
+
+        function showSolution(x, y) {
+            dimAll();
+            solIcon.style.opacity = '1';
+            solIcon.style.filter  = '';
+            solIcon.classList.add('sol-zoomed');
+
+            // Esconde a interrogação
+            if (solQ) solQ.setAttribute('opacity', '0');
+
+            // Dispara as estrelas
+            fireStars();
+
+            // Mostra o popup
+            positionPopupAboveMag(x, y);
+            popup.classList.remove('visible');
+            void popup.offsetWidth;
+            popup.classList.add('visible');
+        }
+
+        function hideSolution() {
+            undimAll();
+            solIcon.classList.remove('sol-zoomed');
+            popup.classList.remove('visible');
+
+            // Restaura a interrogação e esconde estrelas
+            resetStars();
+            if (solQ) solQ.setAttribute('opacity', '1');
+        }
+
+        let phase = 'pause', phaseStart = null, step = 0;
+        let curX = stops[0].x, curY = stops[0].y;
+        setMag(curX, curY);
+
+        function tick(ts) {
+            if (!phaseStart) phaseStart = ts;
+            const elapsed = ts - phaseStart;
+
+            if (phase === 'travel') {
+                const from = stops[step - 1];
+                const to   = stops[step];
+                const t    = Math.min(elapsed / travelMs, 1);
+                curX = from.x + (to.x - from.x) * easeInOut(t);
+                curY = from.y + (to.y - from.y) * easeInOut(t);
+                setMag(curX, curY);
+                if (t >= 1) {
+                    curX = to.x; curY = to.y;
+                    phase = 'pause'; phaseStart = ts;
+                    if (step === stops.length - 1) showSolution(curX, curY);
+                }
+
+            } else if (phase === 'pause') {
+                setMag(curX, curY);
+                if (step === stops.length - 1) positionPopupAboveMag(curX, curY);
+                const duration = (step === stops.length - 1) ? foundMs : pauseMs;
+                if (elapsed >= duration) {
+                    if (step === stops.length - 1) {
+                        hideSolution();
+                        phase = 'return'; phaseStart = ts;
+                    } else {
+                        step++;
+                        phase = 'travel'; phaseStart = ts;
+                    }
+                }
+
+            } else if (phase === 'return') {
+                const fromX = stops[stops.length - 1].x;
+                const fromY = stops[stops.length - 1].y;
+                const t     = Math.min(elapsed / returnMs, 1);
+                curX = fromX + (stops[0].x - fromX) * easeInOut(t);
+                curY = fromY + (stops[0].y - fromY) * easeInOut(t);
+                setMag(curX, curY);
+                if (t >= 1) {
+                    curX = stops[0].x; curY = stops[0].y;
+                    step = 0; phase = 'pause'; phaseStart = ts;
+                }
+            }
+
+            requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+    })();
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
