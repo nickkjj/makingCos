@@ -4,9 +4,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MakingCos - Desenvolvimento & Tecnologia</title>
+    <title>Consultoria Regulatória ANVISA para Cosméticos e Farmacêuticos | MakingCos</title>
     <meta name="description"
         content="Excelência técnica para impulsionar negócios no mercado de alta performance através do conhecimento científico profundo.">
+
+    <!-- Canonical & Open Graph -->
+    <link rel="canonical" href="https://www.makingcos.com.br/">
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://www.makingcos.com.br/">
+    <meta property="og:title"       content="Consultoria Regulatória ANVISA para Cosméticos e Farmacêuticos | MakingCos">
+    <meta property="og:description" content="Consultoria técnica especializada em registro ANVISA, BPF/GMP e P&D cosmético. +80 produtos registrados, 100% de aprovação em auditorias. SP e MG.">
+    <meta property="og:locale"      content="pt_BR">
+    <meta name="twitter:card"       content="summary_large_image">
+
+    <!-- Schema: Organization + LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["Organization", "LocalBusiness"],
+      "name": "MakingCos — Consultoria Técnica Cosmética e Farmacêutica",
+      "url": "https://www.makingcos.com.br",
+      "telephone": "+55-11-97608-5155",
+      "email": "contato@makingcos.com.br",
+      "description": "Consultoria regulatória ANVISA, adequação BPF/GMP, P&D de cosméticos e farmacêuticos. Atuamos em São Paulo e Minas Gerais.",
+      "areaServed": ["São Paulo", "Minas Gerais", "Brasil"],
+      "serviceType": [
+        "Consultoria Regulatória ANVISA",
+        "Adequação BPF GMP",
+        "Registro de Cosméticos ANVISA",
+        "P&D Cosméticos",
+        "Assuntos Regulatórios Farmacêuticos",
+        "Auditoria BPF",
+        "Engenharia de Plantas Fabris"
+      ],
+      "knowsAbout": ["ANVISA", "BPF", "GMP", "Registro de cosméticos", "Assuntos regulatórios", "P&D cosmético", "Dermocosmético", "Skincare", "Haircare", "AFE ANVISA"]
+    }
+    </script>
+
+    <!-- Schema: FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "A MakingCos realiza registro de cosméticos na ANVISA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Temos mais de 80 produtos registrados junto à ANVISA, com 100% de aprovação. Atuamos em registro de cosméticos grau 1 e grau 2, medicamentos e saneantes, com interface direta com ANVISA, MAPA e INMETRO."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que é adequação BPF/GMP e como a MakingCos pode ajudar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BPF (Boas Práticas de Fabricação) e GMP (Good Manufacturing Practices) são normas obrigatórias da ANVISA para indústrias cosméticas e farmacêuticas. A MakingCos realiza diagnóstico, implementação e auditoria de sistemas de qualidade para garantir conformidade total e aprovação em inspeções."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A MakingCos oferece serviços de P&D para cosméticos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Desenvolvemos formulações de Skincare de Alta Performance, Haircare Profissional e Dermocosméticos, com rigor científico, otimização de custos e conformidade regulatória desde a concepção do produto."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Onde a MakingCos atende?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Atendemos empresas em São Paulo (SP) e Minas Gerais (MG), com possibilidade de consultoria remota para todo o território nacional."
+          }
+        }
+      ]
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -137,7 +212,7 @@
 
 <body class="bg-offwhite text-textgrey font-sans antialiased overflow-x-hidden">
 
-    <!-- Header / Navbar -->
+    <!-- Header / Navbar (HOME) -->
     <header id="navbar" class="fixed w-full top-0 z-50 glass-header transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
@@ -149,11 +224,25 @@
                     <a href="#value-proposition" class="text-textgrey hover:text-primary font-medium transition-colors">Por que nós?</a>
                     <a href="#identity" class="text-textgrey hover:text-primary font-medium transition-colors">A Empresa</a>
                     <a href="#services" class="text-textgrey hover:text-primary font-medium transition-colors">Especialidades</a>
+                    <a href="#insights" class="text-textgrey hover:text-primary font-medium transition-colors">Insights & Artigos</a>
                 </nav>
                 <div class="hidden md:block">
-                    <a href="#contact" class="px-6 py-2 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors font-medium">Fale Conosco</a>
+                    <a href="#contact-section" class="px-6 py-2 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors font-medium">Diagnóstico Gratuito</a>
                 </div>
+                <button id="menuToggle" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Abrir menu" aria-expanded="false">
+                    <span class="block w-6 h-0.5 bg-primary"></span>
+                    <span class="block w-6 h-0.5 bg-primary"></span>
+                    <span class="block w-6 h-0.5 bg-primary"></span>
+                </button>
             </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-offwhite border-t border-muted/20 px-4 py-4 space-y-3">
+            <a href="#hero" class="block text-textgrey hover:text-primary font-medium py-1">Início</a>
+            <a href="#value-proposition" class="block text-textgrey hover:text-primary font-medium py-1">Por que nós?</a>
+            <a href="#identity" class="block text-textgrey hover:text-primary font-medium py-1">A Empresa</a>
+            <a href="#services" class="block text-textgrey hover:text-primary font-medium py-1">Especialidades</a>
+            <a href="#insights" class="block text-textgrey hover:text-primary font-medium py-1">Insights &amp; Artigos</a>
+            <a href="#contact-section" class="block w-full text-center px-6 py-2 bg-primary text-white rounded-full font-medium mt-2">Diagnóstico Gratuito</a>
         </div>
     </header>
 
@@ -163,9 +252,9 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary leading-tight mb-8">
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary leading-tight mb-8">
                             A Melhor Consultoria Técnica <br>para a Área Cosmética e Farmacêutica.
-                        </h2>
+                        </h1>
                         <div class="flex flex-col sm:flex-row gap-6 mb-8">
                             <div class="flex items-center gap-3 bg-white px-5 py-4 rounded-xl shadow-sm border border-muted/20">
                                 <span class="text-3xl font-bold text-accent">100%</span>
@@ -506,6 +595,139 @@
             </div>
         </section>
     </main>
+
+    <!-- Insights / Technical Blog Section -->
+    <section id="insights" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+                <h3 class="text-3xl md:text-4xl font-serif font-bold text-primary mb-4">Conteúdo Técnico & Atualizações</h3>
+                <div class="w-24 h-1 bg-accent mx-auto mt-4 mb-6 rounded-full"></div>
+                <p class="text-textgrey text-lg font-sans">
+                    Artigos aprofundados sobre regulatório e P&D para guiar as decisões estratégicas da sua indústria, com a expertise de quem já aprovou mais de 80 registros.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Artigo Pilar 1: Registro ANVISA (Baixa/Média Concorrência | Alto Volume) -->
+                <article class="card flex flex-col h-full bg-white rounded-2xl border border-muted/20 hover:border-accent/50 hover:shadow-lg transition-all duration-300 overflow-hidden fade-up" style="transition-delay:0.1s">
+                    <div class="p-8 flex flex-col flex-grow">
+                        <span class="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider rounded-full w-max mb-4">Assuntos Regulatórios</span>
+                        <h4 class="text-xl font-bold font-serif text-primary mb-3 hover:text-accent transition-colors cursor-pointer">
+                            Como registrar cosmético na ANVISA: Passo a passo atualizado
+                        </h4>
+                        <p class="text-sm text-textgrey mb-6 flex-grow font-sans">
+                            Entenda a diferença entre Grau 1 e Grau 2, a documentação exigida (dossiê técnico) e como evitar reprovações atrasando seu lançamento no mercado.
+                        </p>
+                        <a href="artigo-registro-anvisa.html" class="inline-flex items-center gap-2 text-primary font-bold text-sm hover:text-accent transition-colors group">
+                            Ler artigo completo
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Artigo Pilar 2: BPF Cosméticos (Transacional | Alto Valor) -->
+                <article class="card flex flex-col h-full bg-white rounded-2xl border border-muted/20 hover:border-accent/50 hover:shadow-lg transition-all duration-300 overflow-hidden fade-up" style="transition-delay:0.2s">
+                    <div class="p-8 flex flex-col flex-grow">
+                        <span class="inline-block px-3 py-1 bg-[#133C34]/10 text-[#133C34] text-xs font-bold uppercase tracking-wider rounded-full w-max mb-4">Qualidade e BPF</span>
+                        <h4 class="text-xl font-bold font-serif text-primary mb-3 hover:text-accent transition-colors cursor-pointer">
+                            BPF Cosméticos: Guia prático de adequação à RDC 48
+                        </h4>
+                        <p class="text-sm text-textgrey mb-6 flex-grow font-sans">
+                            Boas Práticas de Fabricação não são apenas obrigações legais, mas diferenciais de mercado. Veja como preparar sua planta fabril para uma auditoria sem sustos.
+                        </p>
+                        <a href="artigo-bpf-cosmeticos.html" class="inline-flex items-center gap-2 text-primary font-bold text-sm hover:text-accent transition-colors group">
+                            Ler artigo completo
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Artigo Pilar 3: AFE (Baixa Concorrência | Topo de Funil) -->
+                <article class="card flex flex-col h-full bg-white rounded-2xl border border-muted/20 hover:border-accent/50 hover:shadow-lg transition-all duration-300 overflow-hidden fade-up" style="transition-delay:0.3s">
+                    <div class="p-8 flex flex-col flex-grow">
+                        <span class="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider rounded-full w-max mb-4">Gestão Regulatória</span>
+                        <h4 class="text-xl font-bold font-serif text-primary mb-3 hover:text-accent transition-colors cursor-pointer">
+                            AFE ANVISA para Cosméticos: Como obter, prazos e custos
+                        </h4>
+                        <p class="text-sm text-textgrey mb-6 flex-grow font-sans">
+                            O primeiro passo para qualquer indústria, importadora ou distribuidora de cosméticos. Descubra os requisitos técnicos e as taxas para emissão da Autorização de Funcionamento de Empresa.
+                        </p>
+                        <a href="artigo-afe-anvisa.html" class="inline-flex items-center gap-2 text-primary font-bold text-sm hover:text-accent transition-colors group">
+                            Ler artigo completo
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FAQ SECTION ═══════════ -->
+    <section id="faq" class="py-20 bg-white" aria-labelledby="faq-heading">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 id="faq-heading" class="text-3xl md:text-4xl font-serif font-bold text-primary mb-4">Perguntas Frequentes</h2>
+                <p class="text-textgrey text-lg">Sobre registro ANVISA, BPF, P&amp;D de cosméticos e consultoria regulatória.</p>
+                <div class="w-24 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
+            </div>
+            <div class="space-y-4" id="faqAccordion">
+
+                <div class="border border-muted/20 rounded-2xl overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 font-bold text-primary flex justify-between items-center hover:bg-offwhite transition-colors" aria-expanded="false">
+                        <span>O que é registro de cosmético na ANVISA e quando é obrigatório?</span>
+                        <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-body hidden px-6 pb-5 text-textgrey text-sm leading-relaxed">
+                        O registro na ANVISA é obrigatório para cosméticos grau 2 — produtos com maior potencial de risco à saúde, como protetores solares, alisantes capilares, tinturas e antitranspirantes. Produtos grau 1 (shampoos simples, hidratantes básicos) passam pelo processo de notificação simplificada. A MakingCos conduz todo o processo: classificação do produto, elaboração do dossiê técnico, peticionamento eletrônico e acompanhamento até o deferimento da ANVISA.
+                    </div>
+                </div>
+
+                <div class="border border-muted/20 rounded-2xl overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 font-bold text-primary flex justify-between items-center hover:bg-offwhite transition-colors" aria-expanded="false">
+                        <span>O que é adequação BPF/GMP e minha empresa precisa?</span>
+                        <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-body hidden px-6 pb-5 text-textgrey text-sm leading-relaxed">
+                        BPF (Boas Práticas de Fabricação) e GMP (Good Manufacturing Practices) são normas obrigatórias da ANVISA para toda indústria que fabrica cosméticos, medicamentos ou saneantes. A não conformidade com BPF pode gerar autuações, embargo de produtos e interdição da planta fabril. A MakingCos realiza diagnóstico de vulnerabilidades, implementação de sistemas de gestão da qualidade, treinamentos e pré-auditoria, garantindo 100% de aprovação em inspeções da ANVISA.
+                    </div>
+                </div>
+
+                <div class="border border-muted/20 rounded-2xl overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 font-bold text-primary flex justify-between items-center hover:bg-offwhite transition-colors" aria-expanded="false">
+                        <span>O que é AFE e como obter a Autorização de Funcionamento de Empresa?</span>
+                        <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-body hidden px-6 pb-5 text-textgrey text-sm leading-relaxed">
+                        A AFE (Autorização de Funcionamento de Empresa) é uma exigência da ANVISA para empresas que fabricam, importam, distribuem ou comercializam cosméticos, medicamentos ou produtos para saúde. Antes da AFE, a empresa precisa da Licença de Funcionamento da Vigilância Sanitária local. A MakingCos orienta e conduz todo o processo: cadastramento da empresa na ANVISA, definição do porte, elaboração do dossiê AFE e acompanhamento até a emissão da autorização.
+                    </div>
+                </div>
+
+                <div class="border border-muted/20 rounded-2xl overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 font-bold text-primary flex justify-between items-center hover:bg-offwhite transition-colors" aria-expanded="false">
+                        <span>A MakingCos desenvolve formulações cosméticas (P&amp;D)?</span>
+                        <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-body hidden px-6 pb-5 text-textgrey text-sm leading-relaxed">
+                        Sim. Atuamos em P&amp;D de cosméticos desde a concepção da fórmula até a aprovação regulatória. Desenvolvemos Skincare de Alta Performance, Haircare Profissional e Dermocosméticos com ativos inteligentes, testes de estabilidade acelerada e conformidade ANVISA desde a fase de bancada. O diferencial da MakingCos é integrar P&amp;D e assuntos regulatórios em um único fluxo, eliminando retrabalho e acelerando o time-to-market.
+                    </div>
+                </div>
+
+                <div class="border border-muted/20 rounded-2xl overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 font-bold text-primary flex justify-between items-center hover:bg-offwhite transition-colors" aria-expanded="false">
+                        <span>A MakingCos atende empresas fora de São Paulo?</span>
+                        <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-body hidden px-6 pb-5 text-textgrey text-sm leading-relaxed">
+                        Temos atuação presencial em São Paulo (SP) e Minas Gerais (MG). Para projetos regulatórios — como registro ANVISA, elaboração de dossiê técnico e adequação documental BPF — também atendemos remotamente empresas de todo o Brasil. Entre em contato para entender qual modalidade melhor atende à necessidade da sua empresa.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ══════════════════════════════════ -->
 
     <!-- ═══════════════════════════════════════════════
          SEÇÃO DE CONTATO — "Diagnóstico Técnico Gratuito"
@@ -1507,6 +1729,60 @@
     </script>
 
     <script src="script.js"></script>
+
+    <!-- Menu mobile -->
+    <script>
+    (function () {
+        var toggle = document.getElementById('menuToggle');
+        var mobileMenu = document.getElementById('mobileMenu');
+        if (toggle && mobileMenu) {
+            toggle.addEventListener('click', function () {
+                var isOpen = !mobileMenu.classList.toggle('hidden');
+                toggle.setAttribute('aria-expanded', String(isOpen));
+            });
+            mobileMenu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    mobileMenu.classList.add('hidden');
+                    toggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+    })();
+    </script>
+
+    <!-- FAQ Accordion -->
+    <script>
+    (function () {
+        document.querySelectorAll('.faq-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var body    = btn.nextElementSibling;
+                var chevron = btn.querySelector('.faq-chevron');
+                var isOpen  = btn.getAttribute('aria-expanded') === 'true';
+
+                // Fecha todos os outros itens
+                document.querySelectorAll('.faq-btn').forEach(function (other) {
+                    if (other !== btn) {
+                        other.setAttribute('aria-expanded', 'false');
+                        other.nextElementSibling.classList.add('hidden');
+                        var otherChevron = other.querySelector('.faq-chevron');
+                        if (otherChevron) otherChevron.style.transform = '';
+                    }
+                });
+
+                // Alterna o item clicado
+                if (isOpen) {
+                    btn.setAttribute('aria-expanded', 'false');
+                    body.classList.add('hidden');
+                    if (chevron) chevron.style.transform = '';
+                } else {
+                    btn.setAttribute('aria-expanded', 'true');
+                    body.classList.remove('hidden');
+                    if (chevron) chevron.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+    })();
+    </script>
 </body>
 
 </html>
