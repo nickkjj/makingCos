@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.makingcos.com.br/sitemap.xml
+Sitemap: https://makingcos.com.br/sitemap.xml
