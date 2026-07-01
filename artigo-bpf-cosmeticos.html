@@ -213,6 +213,41 @@
         </div>
     </main>
 
+    <!-- ═══════════ FAQ SECTION ═══════════ -->
+    <section id="faq" class="py-20 bg-white" aria-labelledby="faq-heading">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 id="faq-heading" class="text-3xl md:text-4xl font-serif font-bold text-primary mb-4">Perguntas Frequentes sobre BPF e RDC 48</h2>
+                <p class="text-textgrey text-lg">Boas Práticas de Fabricação e adequação para auditorias da ANVISA.</p>
+                <div class="w-24 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
+            </div>
+            <div class="space-y-4" id="faqAccordion">
+
+                <div class="border border-muted/20 rounded-2xl overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 font-bold text-primary flex justify-between items-center hover:bg-offwhite transition-colors" aria-expanded="true">
+                        <span>O que é a RDC 48 da ANVISA e qual sua exigência?</span>
+                        <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0 transition-transform" style="transform:rotate(180deg)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-body px-6 pb-5 text-textgrey text-sm leading-relaxed">
+                        A RDC 48 estabelece os requisitos obrigatórios para a fabricação, embalagem, armazenamento e controle de qualidade de produtos cosméticos. O foco central é minimizar riscos que não podem ser detectados apenas na análise do produto acabado, como contaminação cruzada.
+                    </div>
+                </div>
+
+                <div class="border border-muted/20 rounded-2xl overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 font-bold text-primary flex justify-between items-center hover:bg-offwhite transition-colors" aria-expanded="false">
+                        <span>Como se preparar para uma auditoria da ANVISA em BPF?</span>
+                        <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-body hidden px-6 pb-5 text-textgrey text-sm leading-relaxed">
+                        O segredo é a prevenção através de Auditorias Internas (Autoinspeções) periódicas. O checklist da ANVISA deve ser percorrido linha a linha, garantindo que os Procedimentos Operacionais Padrão (POPs) reflitam exatamente a prática executada no chão de fábrica.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ══════════════════════════════════ -->
+
     <footer class="bg-[#080f0d] text-white/70 py-8 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-sans">
             <a href="index.html">
@@ -223,8 +258,6 @@
         </div>
     </footer>
 
-
-</html>
     <!-- Scripts funcionais -->
     <script>
     (function () {
@@ -258,4 +291,38 @@
         }
     })();
     </script>
+
+    <!-- FAQ Accordion -->
+    <script>
+    (function () {
+        document.querySelectorAll('.faq-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var body    = btn.nextElementSibling;
+                var chevron = btn.querySelector('.faq-chevron');
+                var isOpen  = btn.getAttribute('aria-expanded') === 'true';
+
+                document.querySelectorAll('.faq-btn').forEach(function (other) {
+                    if (other !== btn) {
+                        other.setAttribute('aria-expanded', 'false');
+                        other.nextElementSibling.classList.add('hidden');
+                        var otherChevron = other.querySelector('.faq-chevron');
+                        if (otherChevron) otherChevron.style.transform = '';
+                    }
+                });
+
+                if (isOpen) {
+                    btn.setAttribute('aria-expanded', 'false');
+                    body.classList.add('hidden');
+                    if (chevron) chevron.style.transform = '';
+                } else {
+                    btn.setAttribute('aria-expanded', 'true');
+                    body.classList.remove('hidden');
+                    if (chevron) chevron.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+    })();
+    </script>
 </body>
+
+</html>
