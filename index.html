@@ -10,27 +10,26 @@
         content="Consultoria técnica especializada em registro ANVISA, BPF/GMP e P&D cosmético. +80 produtos registrados, 100% de aprovação em auditorias. SP e MG.">
 
     <!-- Canonical & Open Graph -->
-    <link rel="canonical" href="https://www.makingcos.com.br/">
+    <link rel="canonical" href="https://makingcos.com.br/">
     <meta property="og:type"        content="website">
-    <meta property="og:url"         content="https://www.makingcos.com.br/">
+    <meta property="og:url"         content="https://makingcos.com.br/">
     <meta property="og:title"       content="Consultoria ANVISA: Cosméticos e Farmacêuticos | MakingCos">
     <meta property="og:description" content="Consultoria técnica especializada em registro ANVISA, BPF/GMP e P&D cosmético. +80 produtos registrados, 100% de aprovação em auditorias. SP e MG.">
     <meta property="og:locale"      content="pt_BR">
     <meta name="twitter:card"       content="summary_large_image">
 
-    <!-- Schema: Organization + LocalBusiness -->
+    <!-- Schema: Organization -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": ["Organization", "LocalBusiness"],
+      "@type": "Organization",
       "name": "MakingCos — Consultoria Técnica Cosmética e Farmacêutica",
       "url": "https://makingcos.com.br",
       "logo": "https://makingcos.com.br/media/makingcos-icon.webp",
       "image": "https://makingcos.com.br/media/makingcos.webp",
-      "telephone": "+55-11-97608-5155",
+      "telephone": "+55-11-91093-5155",
       "email": "contato@makingcos.com.br",
       "description": "Consultoria regulatória ANVISA, adequação BPF/GMP, P&D de cosméticos e farmacêuticos. Atuamos em São Paulo e Minas Gerais.",
-      "areaServed": ["São Paulo", "Minas Gerais", "Brasil"],
       "serviceType": [
         "Consultoria Regulatória ANVISA",
         "Adequação BPF GMP",
@@ -102,41 +101,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Lusitana:wght@400;700&display=swap"
         rel="stylesheet">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#133C34',
-                        accent: '#C19E5D',
-                        offwhite: '#FAF9F5',
-                        textgrey: '#676561',
-                        muted: '#6A7A75',
-                    },
-                    fontFamily: {
-                        serif: ['Lusitana', 'serif'],
-                        sans: ['"Faculty Glyphic"', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .glass-header {
-                @apply bg-offwhite/90 backdrop-blur-md border-b border-muted/20;
-            }
-            .card {
-                @apply bg-white border border-muted/20 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300;
-            }
-            .placeholder-img {
-                @apply bg-gray-200 flex flex-col items-center justify-center text-gray-500 rounded-lg overflow-hidden;
-            }
-        }
-        html { scroll-behavior: smooth; }
-    </style>
-
+    <link rel="stylesheet" href="output.css">
     <style>
         /* ===== MAGNIFIER SCENE ===== */
         #magScene { user-select: none; }
@@ -222,6 +187,16 @@
             100% { content: ''; }
         }
     </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18187094049"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18187094049');
+    </script>
 </head>
 
 <body class="bg-offwhite text-textgrey font-sans antialiased overflow-x-hidden">
@@ -231,7 +206,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center gap-3">
-                    <img src="./media/makingcos.webp" alt="Logo MakingCos" class="h-16">
+                    <img src="./media/makingcos.webp" alt="Logo MakingCos" width="auto" height="64" class="h-16">
                 </div>
                 <nav class="hidden md:flex space-x-8">
                     <a href="#hero" class="text-textgrey hover:text-primary font-medium transition-colors">Início</a>
@@ -520,7 +495,7 @@
         <section id="value-proposition" class="py-20 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-primary">Por que MakingCos?</h3>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary">Por que MakingCos?</h2>
                     <div class="w-24 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -566,7 +541,7 @@
                         </div>
                     </div>
                     <div class="order-1 lg:order-2 text-white">
-                        <h3 class="text-3xl md:text-4xl font-serif font-bold mb-6">Conhecimento que Transforma</h3>
+                        <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6">Conhecimento que Transforma</h2>
                         <p class="text-lg text-white/80 mb-6 font-sans">
                             A união perfeita do rigor científico com uma visão estratégica apurada de negócios. Na MakingCos, garantimos que a ciência de ponta se traduza em diferenciais competitivos e resultados tangíveis.
                         </p>
@@ -584,7 +559,7 @@
         <section id="services" class="py-20 bg-offwhite">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-16">
-                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-primary mb-4">Nossas Especialidades e Conformidade</h3>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary mb-4">Nossas Especialidades e Conformidade</h2>
                     <p class="text-textgrey text-lg">Atuamos de forma integrada nas indústrias Cosmética e Farmacêutica, garantindo regularização total, segura e eficiente de produtos e plantas fabris.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
@@ -617,7 +592,7 @@
     <section id="insights" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
-                <h3 class="text-3xl md:text-4xl font-serif font-bold text-primary mb-4">Conteúdo Técnico & Atualizações</h3>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary mb-4">Conteúdo Técnico & Atualizações</h2>
                 <div class="w-24 h-1 bg-accent mx-auto mt-4 mb-6 rounded-full"></div>
                 <p class="text-textgrey text-lg font-sans">
                     Artigos aprofundados sobre regulatório e P&D para guiar as decisões estratégicas da sua indústria, com a expertise de quem já aprovou mais de 80 registros.
@@ -1051,7 +1026,7 @@
                         <p class="text-white/50 font-sans text-xs uppercase tracking-widest mb-4">Escolha como prefere iniciar</p>
 
                         <!-- WhatsApp CTA -->
-                        <a href="https://wa.me/5511976085155?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20o%20Diagn%C3%B3stico%20T%C3%A9cnico%20Gratuito%20da%20MakingCos."
+                        <a href="https://wa.me/5511910935155?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20o%20Diagn%C3%B3stico%20T%C3%A9cnico%20Gratuito%20da%20MakingCos."
                            target="_blank" rel="noopener"
                            class="cta-whatsapp w-full mb-4">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
@@ -1096,7 +1071,7 @@
                     <div class="flex flex-col sm:flex-row gap-3 text-sm">
                         <div class="flex items-center gap-2 text-white/50 font-sans">
                             <svg class="w-4 h-4 text-accent/60 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                            (11) 97608-5155
+                            (11) 91093-5155
                         </div>
                         <div class="flex items-center gap-2 text-white/50 font-sans">
                             <svg class="w-4 h-4 text-accent/60 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
@@ -1134,7 +1109,7 @@
     <!-- Compact footer -->
     <footer class="bg-[#080f0d] text-white/70 py-8 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-sans">
-            <img src="./media/makingcos.webp" alt="Logo MakingCos" class="h-10" style="filter: brightness(0) invert(1); opacity: 0.7;">
+            <img src="./media/makingcos.webp" alt="Logo MakingCos" loading="lazy" width="auto" height="40" class="h-10" style="filter: brightness(0) invert(1); opacity: 0.7;">
             <p>&copy; 2026 MakingCos — Desenvolvimento &amp; Tecnologia. Todos os direitos reservados.</p>
             <span>SP · MG</span>
         </div>

@@ -9,6 +9,9 @@
     <link rel="icon" type="image/webp" href="./media/makingcos-icon.webp">
 
     <meta name="description" content="Guia completo de BPF para cosméticos (RDC 48): pilares, preparação para auditorias da ANVISA e como evitar autuações e multas na sua indústria.">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://makingcos.com.br/artigo-bpf-cosmeticos.html">
     <meta property="og:title" content="BPF Cosméticos (RDC 48): Guia Completo 2026 | MakingCos">
     <meta property="og:description" content="Guia completo de BPF para cosméticos (RDC 48): pilares, preparação para auditorias da ANVISA e como evitar autuações e multas na sua indústria.">
     <meta property="og:type" content="article">
@@ -72,39 +75,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Lusitana:wght@400;700&display=swap" rel="stylesheet">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="output.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18187094049"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#133C34',
-                        accent: '#C19E5D',
-                        offwhite: '#FAF9F5',
-                        textgrey: '#676561',
-                        muted: '#6A7A75',
-                    },
-                    fontFamily: {
-                        serif: ['Lusitana', 'serif'],
-                        sans: ['"Faculty Glyphic"', 'sans-serif'],
-                    }
-                }
-            }
-        }
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18187094049');
     </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .glass-header {
-                @apply bg-offwhite/90 backdrop-blur-md border-b border-muted/20;
-            }
-            .prose h2 { @apply text-2xl font-serif font-bold text-primary mt-10 mb-4; }
-            .prose h3 { @apply text-xl font-serif font-bold text-primary mt-8 mb-3; }
-            .prose p { @apply text-textgrey font-sans mb-5 leading-relaxed text-[1.05rem]; }
-            .prose ul { @apply list-disc list-inside text-textgrey font-sans mb-6 pl-4 space-y-2; }
-            .prose strong { @apply font-bold text-primary; }
-            .prose a { @apply text-accent hover:underline font-medium; }
-        }
-    </style>
 </head>
 
 <body class="bg-offwhite text-textgrey font-sans antialiased">
@@ -156,7 +137,7 @@
                 <div class="flex items-center justify-center gap-4 text-sm text-muted font-sans">
                     <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg> 23 de Junho, 2026</span>
                     <span>•</span>
-                    <span>Por <strong class="text-primary">Equipe MakingCos</strong></span>
+                    <span>Por <strong class="text-primary">Equipe MakingCos, Especialistas em Assuntos Regulatórios</strong></span>
                     <span>•</span>
                     <span>6 min de leitura</span>
                 </div>
@@ -164,13 +145,13 @@
 
             <!-- Imagem de Destaque -->
             <div class="w-full h-64 md:h-96 bg-primary/5 rounded-2xl border border-muted/20 mb-12 flex items-center justify-center overflow-hidden">
-                <img src="./media/hero-cosmeticos-bpf.webp" alt="Boas Práticas de Fabricação (BPF) para cosméticos" class="w-full h-full object-cover">
+                <img src="./media/hero-cosmeticos-bpf.webp" alt="Boas Práticas de Fabricação (BPF) para cosméticos" width="auto" height="384" loading="lazy" class="w-full h-full object-cover">
             </div>
 
             <article class="prose max-w-none">
                 <p>Na indústria de cosméticos, não basta ter um produto inovador e com alto apelo comercial. A garantia da qualidade, segurança e eficácia de cada lote produzido depende estritamente das <strong>Boas Práticas de Fabricação (BPF)</strong>, regulamentadas no Brasil pela <strong>RDC 48/2013 da ANVISA</strong>.</p>
                 
-                <p>A adequação às normas de BPF costuma ser um dos maiores desafios para gestores de qualidade, gerentes industriais e responsáveis técnicos. Uma falha neste processo pode resultar em recolhimento de produtos (recall), suspensão de linhas de produção e autuações severas durante inspeções da Vigilância Sanitária.</p>
+                <p>A adequação às normas de BPF costuma ser um dos maiores desafios para gestores de qualidade, gerentes industriais e responsáveis técnicos. Uma falha neste processo pode resultar em recolhimento de produtos (recall), suspensão de linhas de produção e autuações severas durante inspeções da Vigilância Sanitária. Antes mesmo da produção, lembre-se de que sua empresa deve possuir a <a href="artigo-afe-anvisa.html">Autorização de Funcionamento de Empresa (AFE)</a>.</p>
 
                 <h2>O que é a RDC 48 e qual sua exigência?</h2>
                 <p>A RDC 48 estabelece os requisitos obrigatórios para a fabricação, embalagem, armazenamento e controle de qualidade de produtos de higiene pessoal, perfumaria e cosméticos. O foco central da norma é <strong>minimizar os riscos que não podem ser detectados apenas através da análise do produto acabado</strong>, como a contaminação cruzada e a troca acidental de rótulos.</p>
@@ -196,7 +177,7 @@
 
                 <h2>O Papel de uma Consultoria Especializada</h2>
                 <p>Implementar a RDC 48 do zero ou reestruturar um SGQ deficiente consome tempo e recursos operacionais que a maioria das fábricas não tem sobrando.</p>
-                <p>Contar com uma <strong>consultoria BPF e regulatória como a MakingCos</strong> oferece segurança operacional. Com vasta experiência no setor e um índice de <strong>100% de aprovação em auditorias</strong>, realizamos um "Raio-X" da sua planta fabril, identificamos os GAPs de conformidade e construímos um plano de adequação inteligente — resolvendo não conformidades com otimização de recursos e capacitando sua equipe na prática.</p>
+                <p>Contar com uma <strong>consultoria BPF e regulatória como a MakingCos</strong> oferece segurança operacional. Com vasta experiência no setor e um índice de <strong>100% de aprovação em auditorias</strong>, realizamos um "Raio-X" da sua planta fabril, identificamos os GAPs de conformidade e construímos um plano de adequação inteligente. Também atuamos no <a href="artigo-registro-anvisa.html">registro de cosméticos</a>, resolvendo não conformidades com otimização de recursos e capacitando sua equipe na prática.</p>
             </article>
 
             <div class="mt-16 bg-primary rounded-2xl p-8 relative overflow-hidden">
@@ -253,7 +234,7 @@
     <footer class="bg-[#080f0d] text-white/70 py-8 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-sans">
             <a href="index.html">
-                <img src="./media/makingcos.webp" alt="Logo MakingCos" class="h-10" style="filter: brightness(0) invert(1); opacity: 0.7;">
+                <img src="./media/makingcos.webp" alt="Logo MakingCos" loading="lazy" width="auto" height="40" class="h-10" style="filter: brightness(0) invert(1); opacity: 0.7;">
             </a>
             <p>&copy; 2026 MakingCos — Desenvolvimento &amp; Tecnologia. Todos os direitos reservados.</p>
             <span>SP · MG</span>

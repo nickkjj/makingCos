@@ -10,6 +10,13 @@
 
     <meta name="description" content="Aprenda como registrar cosméticos na ANVISA (Grau 1 e Grau 2). Descubra as etapas, documentos exigidos, custos e prazos neste guia completo atualizado.">
     
+    <!-- Canonical & Open Graph -->
+    <link rel="canonical" href="https://makingcos.com.br/artigo-registro-anvisa.html">
+    <meta property="og:type"        content="article">
+    <meta property="og:url"         content="https://makingcos.com.br/artigo-registro-anvisa.html">
+    <meta property="og:title"       content="Como Registrar Cosmético na ANVISA: Passo a Passo | MakingCos">
+    <meta property="og:description" content="Aprenda como registrar cosméticos na ANVISA (Grau 1 e Grau 2). Descubra as etapas, documentos exigidos, custos e prazos neste guia completo atualizado.">
+
     <!-- Dados Estruturados: Artigo e FAQ (GEO/SEO) -->
     <script type="application/ld+json">
     [
@@ -114,6 +121,14 @@
             "@type": "Answer",
             "text": "Não. Apesar de vendido junto a produtos de beleza, o dermaroller não é um cosmético: a ANVISA o classifica como correlato (produto para saúde), geralmente de risco Classe II, seguindo uma norma própria (RDC 751/2022) e um caminho de regularização diferente do usado para cosméticos Grau 1 ou Grau 2."
             }
+        },
+        {
+            "@type": "Question",
+            "name": "Quanto custa registrar um produto na ANVISA?",
+            "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O custo depende do porte da empresa e da classificação do produto. Para Cosméticos Grau 1 (notificação), a Taxa de Fiscalização de Vigilância Sanitária (TFVS) varia de aproximadamente R$ 150 (para pequenas empresas) a cerca de R$ 1.500 (grandes portes). Produtos Grau 2 (registro) possuem taxas um pouco maiores, variando de R$ 300 a mais de R$ 3.000, com descontos consideráveis para Microempresas (ME) e Empresas de Pequeno Porte (EPP)."
+            }
         }
         ]
     }
@@ -124,40 +139,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Lusitana:wght@400;700&display=swap" rel="stylesheet">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="output.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18187094049"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#133C34',
-                        accent: '#C19E5D',
-                        offwhite: '#FAF9F5',
-                        textgrey: '#676561',
-                        muted: '#6A7A75',
-                    },
-                    fontFamily: {
-                        serif: ['Lusitana', 'serif'],
-                        sans: ['"Faculty Glyphic"', 'sans-serif'],
-                    }
-                }
-            }
-        }
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18187094049');
     </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .glass-header {
-                @apply bg-offwhite/90 backdrop-blur-md border-b border-muted/20;
-            }
-            /* Estilos específicos para o conteúdo do blog */
-            .prose h2 { @apply text-2xl font-serif font-bold text-primary mt-10 mb-4; }
-            .prose h3 { @apply text-xl font-serif font-bold text-primary mt-8 mb-3; }
-            .prose p { @apply text-textgrey font-sans mb-5 leading-relaxed text-[1.05rem]; }
-            .prose ul { @apply list-disc list-inside text-textgrey font-sans mb-6 pl-4 space-y-2; }
-            .prose strong { @apply font-bold text-primary; }
-            .prose a { @apply text-accent hover:underline font-medium; }
-        }
-    </style>
 </head>
 
 <body class="bg-offwhite text-textgrey font-sans antialiased">
@@ -210,7 +202,7 @@
                 <div class="flex items-center justify-center gap-4 text-sm text-muted font-sans">
                     <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg> 23 de Junho, 2026</span>
                     <span>•</span>
-                    <span>Por <strong class="text-primary">Equipe MakingCos</strong></span>
+                    <span>Por <strong class="text-primary">Equipe MakingCos, Especialistas em Assuntos Regulatórios</strong></span>
                     <span>•</span>
                     <span>5 min de leitura</span>
                 </div>
@@ -219,7 +211,7 @@
             <!-- Imagem de Destaque (Placeholder para o layout) -->
             <div class="w-full h-64 md:h-96 bg-primary/5 rounded-2xl border border-muted/20 mb-12 flex items-center justify-center overflow-hidden">
                 <!-- Idealmente, você colocaria uma imagem ilustrativa aqui -->
-                <img src="./media/hero-registro-anvisa.webp" alt="Dossiê técnico para registro de cosmético na ANVISA" class="w-full h-full object-cover">
+                <img src="./media/hero-registro-anvisa.webp" alt="Dossiê técnico para registro de cosmético na ANVISA" width="auto" height="384" loading="lazy" class="w-full h-full object-cover">
             </div>
 
             <!-- Corpo do Conteúdo -->
@@ -239,9 +231,9 @@
                 <h2>2. Regularização da Empresa: AFE e BPF</h2>
                 <p>O registro do produto não pode ser feito por pessoa física. A empresa responsável (fabricante, importadora ou distribuidora) precisa estar legalmente apta. Isso envolve:</p>
                 <ul>
-                    <li><strong>Autorização de Funcionamento de Empresa (AFE):</strong> Emitida pela própria ANVISA, permitindo que o CNPJ atue com cosméticos.</li>
+                    <li><strong><a href="artigo-afe-anvisa.html">Autorização de Funcionamento de Empresa (AFE)</a>:</strong> Emitida pela própria ANVISA, permitindo que o CNPJ atue com cosméticos.</li>
                     <li><strong>Licença Sanitária Local:</strong> Emitida pela Vigilância Sanitária do município ou estado.</li>
-                    <li><strong>Boas Práticas de Fabricação (BPF):</strong> A adequação à RDC 48/2013 é indispensável. A indústria terceirizada que fabricará seu produto deve ter processos validados para garantir a qualidade.</li>
+                    <li><strong><a href="artigo-bpf-cosmeticos.html">Boas Práticas de Fabricação (BPF)</a>:</strong> A adequação à RDC 48/2013 é indispensável. A indústria terceirizada que fabricará seu produto deve ter processos validados para garantir a qualidade.</li>
                 </ul>
 
                 <h2>3. Estruturação do Dossiê Técnico e P&D</h2>
@@ -381,6 +373,16 @@
                     </div>
                 </div>
 
+                <div class="border border-muted/20 rounded-2xl overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 font-bold text-primary flex justify-between items-center hover:bg-offwhite transition-colors" aria-expanded="false">
+                        <span>Quanto custa registrar um produto na ANVISA?</span>
+                        <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-body hidden px-6 pb-5 text-textgrey text-sm leading-relaxed">
+                        O custo depende do porte da empresa e da classificação do produto. Para Cosméticos Grau 1 (notificação), a Taxa de Fiscalização de Vigilância Sanitária (TFVS) varia de aproximadamente R$ 150 (para pequenas empresas) a cerca de R$ 1.500 (grandes portes). Produtos Grau 2 (registro) possuem taxas um pouco maiores, variando de R$ 300 a mais de R$ 3.000, com descontos consideráveis para Microempresas (ME) e Empresas de Pequeno Porte (EPP).
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -390,7 +392,7 @@
     <footer class="bg-[#080f0d] text-white/70 py-8 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-sans">
             <a href="index.html">
-                <img src="./media/makingcos.webp" alt="Logo MakingCos" class="h-10" style="filter: brightness(0) invert(1); opacity: 0.7;">
+                <img src="./media/makingcos.webp" alt="Logo MakingCos" loading="lazy" width="auto" height="40" class="h-10" style="filter: brightness(0) invert(1); opacity: 0.7;">
             </a>
             <p>&copy; 2026 MakingCos — Desenvolvimento &amp; Tecnologia. Todos os direitos reservados.</p>
             <span>SP · MG</span>
